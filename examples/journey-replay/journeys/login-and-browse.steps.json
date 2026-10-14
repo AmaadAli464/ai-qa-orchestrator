@@ -1,0 +1,13 @@
+{
+  "name": "login-and-browse",
+  "description": "Log in to the public demo shop and confirm the product list loads.",
+  "readOnly": true,
+  "steps": [
+    { "action": "goto", "url": "https://www.saucedemo.com/", "note": "open the demo shop" },
+    { "action": "fill", "locators": ["[data-test='username']", "#user-name"], "value": "${ENV:DEMO_USER:standard_user}", "note": "enter username" },
+    { "action": "fill", "locators": ["[data-test='password']", "#password"], "value": "${ENV:DEMO_PASSWORD:secret_sauce}", "note": "enter password" },
+    { "action": "click", "locators": ["[data-test='login-button']", "#login-button"], "note": "submit the login form" },
+    { "action": "expect_url_contains", "value": "inventory.html", "note": "land on the inventory page" },
+    { "action": "expect_text", "locators": [".title", "[data-test='title']"], "value": "Products", "note": "page heading says Products" }
+  ]
+}
